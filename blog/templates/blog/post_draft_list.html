@@ -1,0 +1,10 @@
+{% extends "blog/base.html" %}
+{% block content %}
+  {% for postobj in posts %}
+    <div class="post">
+      <p class='date'>created: {{postobj.created_date|date:'d-m-Y'}}</p>
+      <h1><a href="{% url 'blog:post_detail' pk=postobj.pk %}">{{postobj.title}}</a></h1>
+      <p>{{postobj.text|truncatechars:200}}</p>
+    </div>
+  {% endfor %}
+{% endblock %}
